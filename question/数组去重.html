@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重</title>
+</head>
+
+<body>
+    <script>
+        var obj = {
+            prop: 1
+        },
+            arr1 = [1, 2, 4, 2, 1],
+            arr2 = [1, 2, 4, '2', 1],
+            arr3 = [1, 3, 1, {
+                a: 1
+            }, {
+                    a: 1
+                }, obj];
+        arr3.push(obj);
+
+        function unique1(arr) {
+            if (!Array.isArray(arr) || arr.length <= 1) return arr;
+            var result = [];
+            arr.forEach(item => {
+                if (result.indexOf(item) === -1) {
+                    result.push(item);
+                }
+            });
+            return result;
+        }
+
+        function unique2(arr) {
+            if (!Array.isArray(arr) || arr.length <= 1) return arr;
+            if ('Set' in window && typeof Set === 'function') {
+                return Array.from(new Set(arr).values());
+            }
+        }
+    </script>
+</body>
+
+</html>
