@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <com1 ref="c1" :data="msg"></com1>
+        <input ref="username" type="text" id="username" v-model="msg">
+
+        <com1 :data="name"></com1>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script>
+        //vue2去除了v-el指令，把v-ref指令变成了属性ref
+        Vue.component("com1",{
+            template:'<div class="com1">{{data}}</div>',
+            props:['data'],
+            data(){
+                return {}
+            },
+            methods:{
+                show(){
+                    alert(`this.data=${this.data}`);
+                }
+            }
+        })
+        var vm = new Vue({
+            el:"#app",
+            data: {
+                msg: 123,
+                name:"Tom"
+            }
+        });
+    </script>
+</body>
+
+</html>
