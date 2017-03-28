@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">{{msg}}</div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script>
+        /*
+        1.异步开始
+        2.异步结束
+        3.beforeCreate
+        4.created
+        5.有el->beforeMount->mounted
+          无el->end
+        6.数据更新 && mounted && 有dom绑定->beforeUpdate->updated
+        */
+        var vm = new Vue({
+            data: {
+                msg: 123
+            },
+            beforeCreate() {
+                console.log('beforeCreate');
+            },
+            created() {
+                console.log('created');
+            },
+            beforeMount() {
+                console.log('beforeMount');
+            },
+            mounted() {
+                console.log('mounted');
+            },
+            beforeUpdate(){
+                console.log('beforeUpdate');
+            },
+            updated(){
+                console.log('updated');
+            }
+        });
+    </script>
+</body>
+
+</html>
