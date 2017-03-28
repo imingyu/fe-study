@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/imingyu/fe-study#readme",
   "devDependencies": {
-    "chai": "^3.5.0"
+    "chai": "^3.5.0",
+    "jquery": "^1.12.4",
+    "vue": "^2.2.6"
   }
 }

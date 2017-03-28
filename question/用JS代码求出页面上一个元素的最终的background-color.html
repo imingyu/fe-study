@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #d1 {
+            background: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="d1">
+        <div id="d2">345345</div>
+    </div>
+    
+
+    <script>
+        function $(selector) {
+            var result = document.querySelectorAll(selector);
+            if (result.length == 0) {
+                return null;
+            } else if (result.length == 1) {
+                return result[0];
+            } {
+                return result;
+            }
+        }
+        function getStyle(element, styleAttr) {
+            if (window.getComputedStyle) {
+                var stys =  window.getComputedStyle(element, null);
+                return stys.getPropertyValue ? stys.getPropertyValue(styleAttr) : stys.getAttribute(styleAttr);
+            } else if (element.currentStyle) {
+                return element.currentStyle[styleAttr];
+            }
+        }
+        window.onload = function () {
+            var d1 = $("#d1");
+            console.log(d1.style.background);
+        }
+    </script>
+</body>
+
+</html>

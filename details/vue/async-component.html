@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VUE异步组件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <art-list :list="list"></art-list>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        Vue.component('ArtList', (r, j) => {
+            console.log("define");
+            var spec = {
+                name: "ArtList",
+                props: ["list"],
+                data() {
+                    return {}
+                },
+                methods: {
+                    show(item) {
+                        alert(item);
+                    }
+                },
+                beforeCreate() {
+                    console.log('beforeCreate');
+                },
+                created() {
+                    console.log('created');
+                },
+                beforeMount() {
+                    console.log('beforeMount');
+                },
+                mounted() {
+                    console.log('mounted');
+                }
+            };
+            var catchFunc = err => {
+                spec.template = `<div>${spec.name}组件加载出错，原因：${err.message}<slot></slot></div>`;
+                r(spec);
+            }
+
+            $.get("./art-list.tpl").done(text => {
+                console.log('ajax loaded');
+                spec.template = text;
+                r(spec);
+            }).fail(err => {
+                console.log('ajax error');
+                catchFunc(err);
+            });
+        });
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "app",
+                list: [
+                    "111", "222", "333"
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>
