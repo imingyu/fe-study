@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .avt-box {
+            width: 460px;
+            height: 460px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, .3);
+        }
+        
+        .bg-center {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% auto;
+        }
+        
+        .cell-cetner {
+            overflow: hidden;
+            display: table;
+        }
+        
+        .avt-cell {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        
+        .avt-cell img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .user-box{
+            padding: 10px;
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="avt-box bg-center" style="background-image: url('../images/avt1.png')"></div>
+
+    <div class="user-box">
+        <div class="avt-box cell-cetner">
+            <div class="avt-cell">
+                <img src="../images/avt1.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
