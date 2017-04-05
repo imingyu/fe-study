@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>两个不相干的display table高度竟然保持一致？！</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .user-info{
+            width: 80%;
+            margin: 20px auto;
+            border:1px solid #ccc;
+        }
+        .avt-info{
+            float: left;
+            width:200px;
+        }
+        .avt-box{
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .avt-box img{
+            max-width: 200px;
+            max-height: 200px;
+        }
+        .other-info{
+            margin-left:200px;
+            padding: 0 15px;
+        }
+        .name-info{
+            background: gray;
+        }
+        /*解决：
+        .other-info .row{
+            overflow: hidden;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="user-info">
+        <div class="avt-info">
+            <div class="avt-box">
+                <img src="http://img.hb.aicdn.com/01538cba8efa74c2f5f3e7df6422d76b49ae67fe14c661-gF638W_fw658" alt="">
+            </div>
+        </div>
+        <div class="other-info">
+            <div class="row name-info">
+                <div class="col-md-6">
+                    <h4>杨幂</h4>
+                </div>
+                <div class="col-md-6">
+                    <strong>金牌会员</strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>其他信息</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
