@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS content属性</title>
+    <style>
+        .c1:before {
+            content: 'string'
+        }
+
+        .c2:before {
+            content: 'c22'url('../../images/xin.jpg')attr(data-sd);
+        }
+
+        .c3 {
+            counter-increment: c3;
+        }
+
+        .c3:before {
+            content: counter(c3, decimal)'. ';
+        }
+
+        .excel {
+            margin: 30px auto;
+        }
+
+        .excel .top-bar {
+            margin-bottom: 10px;
+        }
+
+        .col-header>.col {
+            counter-increment: col;
+            text-align: center;
+            background: #eee;
+        }
+
+        .col-header>.col:before {
+            content: counter(col, decimal);
+        }
+
+        .row-header>.col {
+            counter-increment: row;
+            text-align: center;
+            background: #eee;
+        }
+
+        .row-header>.col:before {
+            content: counter(row, decimal);
+        }
+
+        .excel>.container {
+            width: 100%;
+            display: table;
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+            position: relative;
+        }
+
+        .excel .col-header,
+        .excel .row-header,
+        .excel .row {
+            display: table-row;
+        }
+
+        .excel .row-header{
+            position: absolute;
+            top:0;
+            left:-30px;
+            bottom: 0;
+        }
+
+        .excel .col,
+        .excel .empty {
+            display: table-cell;
+            padding: 5px 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1">c1</div>
+    <div class="c2" data-sd="abc">c2</div>
+    <div class="c3">c3</div>
+    <div class="c3">c3</div>
+    <div class="c3">c3</div>
+
+
+    <div id="excel" class="excel">
+        <div class="top-bar">
+            <button id="btnAddRow" type="button">添加一行</button>
+            <button id="btnAddCol" type="button">添加一列</button>
+        </div>
+        <div class="container">
+            <div class="col-header">
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row-header">
+                <div class="empty"></div>
+                <div class="col"></div>
+            </div>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script>
+    $(function(){
+        var excel=$("#excel>.container");
+        $("#btnAddRow").click(function(){
+            excel.find('.row:last').clone().appendTo(excel);
+        });
+    })
+    </script>
+</body>
+
+</html>
