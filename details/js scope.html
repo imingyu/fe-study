@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js scope</title>
+</head>
+
+<body>
+    <script>
+        if (true) {
+            var s1 = 1;
+        }
+        if (false) {
+            var s2 = 2;
+        }
+
+        if (true) {
+            let ts1 = 1;
+        }
+        if (false) {
+            let ts2 = 2;
+        }
+
+
+        var s3 = 23;
+        try {
+            var s3 = 3;
+            undefined();
+        } catch (error) {
+            var s4 = 4;
+        }
+
+        {
+            var s5 = 5;
+            let ts5 = 5;
+            const cs1 = 1;
+            {
+                console.log(ts5);
+            }
+        }
+
+        for (var i = 0; i < 6; i++) {
+            (function () {
+                var j=i;
+                setTimeout(function () {
+                    console.log(j);
+                }, 0);
+            })();
+        }
+    </script>
+</body>
+
+</html>
