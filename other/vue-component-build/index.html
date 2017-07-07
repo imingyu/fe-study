@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>wp1</title>
+    <link rel="stylesheet" href="./dist/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <box :msg="msg">
+            <h2>demo</h2>
+        </box>
+    </div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./dist/index.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg:"嘿嘿嘿"
+            }
+        })
+    </script>
+</body>
+
+</html>

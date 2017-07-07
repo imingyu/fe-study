@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VUE组件递归调用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 微软雅黑;
+            font-size: 14px;
+        }
+
+        #app {
+            width: 80%;
+            margin: 40px auto;
+        }
+
+        .node-container {
+            border-top: 1px solid #ededed;
+            padding: 0;
+        }
+        .node-title{
+            padding: 5px;
+        }
+
+        .node-list {
+            padding-left: 60px;
+        }
+        .node-list>.node-container{
+            border-left: 1px solid #ededed;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script>
+
+    <div id="app">
+        <node-item v-for="node in nodeList" :data="node"></node-item>
+    </div>
+    
+    <script id="tplNodeItem" type="text/template">
+        <div class="node-container">
+            <h3 class="node-title">{{data.text}}</h3>
+            <div v-if="data.list && data.list.length>0" class="node-list">
+                <node-item v-for="item in data.list" :data="item"></node-item>
+            </div>
+        </div>
+    </script>
+    <script>
+        Vue.component('node-item', {
+            props: ["data"],
+            template: document.getElementById("tplNodeItem").innerHTML,
+            data() {
+                return {}
+            }
+        });
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                nodeList: [
+                    {
+                        text: "A",
+                        list: [
+                            {
+                                text: "A.1"
+                            },
+                            {
+                                text: "A.2",
+                                list: [
+                                    {
+                                        text: 'A.2.1'
+                                    },
+                                    {
+                                        text: 'A.2.2'
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        text: "B"
+                    },
+                    {
+                        text: "C"
+                    },
+                    {
+                        text: "D",
+                        list: [
+                            {
+                                text: 'D.1'
+                            },
+                            {
+                                text: 'D.2'
+                            },
+                            {
+                                text: 'D.3',
+                                list: [
+                                    {
+                                        text: "D.3.1"
+                                    },
+                                    {
+                                        text: "D.3.2"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>
