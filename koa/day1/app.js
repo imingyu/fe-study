@@ -29,7 +29,7 @@ router.get('/', async (ctx, next) => {
     await ctx.renderVue({
         path: path.resolve(__dirname, './views/Index.vue')
     })
-    await next()
+    //await next()
 })
 
 router.get('/add-user', async (ctx, next) => {
@@ -58,7 +58,7 @@ router.get('/add-user', async (ctx, next) => {
                 `
         }
     })
-    await next()
+    //await next()
 })
 router.post('/add-user', async (ctx, next) => {
     console.log(ctx.request.body)
@@ -66,7 +66,7 @@ router.post('/add-user', async (ctx, next) => {
     ctx.body = {
         success: true
     }
-    await next()
+    //await next()
 })
 app.use(router.routes())
 app.use(router.allowedMethods())
