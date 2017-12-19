@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: #fff;
+            padding: 30px;
+        }
+
+        #app {
+            background: red;
+            padding: 30px;
+        }
+
+        #inner {
+            background: blue;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="inner"></div>
+    </div>
+    <script>
+        class PullDown {
+            constructor(options, el) {
+                this.el = el;
+                this.startY = 0;
+                this.endY = 0;
+                this.options = options;
+            }
+
+            mount(el) {
+                el = el || this.el;
+
+                let hold = event => {
+                    this.startY = event.targetTouches[0].pageY;
+                }
+                let move = event => {
+                    this.endY = event.targetTouches[0].pageY;
+                }
+                let loosen = event => {
+                    this.endY = event.targetTouches[0].pageY;
+                }
+
+                el.addEventListener('touchstart', hold, false);
+                el.addEventListener('touchmove', move, false);
+                el.addEventListener('touchend', loosen, false);
+                el.addEventListener('touchcanel', loosen, false);
+
+                this.destroy = function () {
+                    this.el = null;
+                    this.options = null;
+                    el.removeEventListener('touchstart', hold);
+                    el.removeEventListener('touchmove', move);
+                    el.removeEventListener('touchend', loosen);
+                    el.removeEventListener('touchcanel', loosen);
+                }
+            }
+        }
+
+        new PullDown({
+        }).mount(document.getElementById('app'));
+    </script>
+</body>
+
+</html>
