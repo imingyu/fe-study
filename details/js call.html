@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function call(func, ctx) {
+            var id1 = (Math.random() + '').replace('0.', '');
+            var id2 = (Math.random() + '').replace('0.', '');
+            ctx[id2] = func;
+
+            var j = 0;
+            for (var i = 2; i < arguments.length; i++) {
+                ctx[id2]['arg' + (i - 2)] = arguments[i];
+                j++;
+            }
+
+            var args = [];
+            for (var i = 0; i < j; i++) {
+                args.push(`this['${id2}']['arg${i}']`);
+            }
+            args = args.join(',');
+
+
+            ctx[id1] = new Function(`
+                return this['${id2}'](${args});
+            `);
+            var result = ctx[id1]();
+            for (var i = 0; i < j; i++) {
+                delete ctx[id2][`arg${i}`];
+            }
+            delete ctx[id2];
+            delete ctx[id1];
+            return result;
+        }
+
+        function add() {
+            var sum = this.val || 0;
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            return sum;
+        }
+
+        var obj = {
+            val: 5
+        }
+        var tt = call(add, obj, 3, 4, 5);
+    </script>
+</body>
+
+</html>
