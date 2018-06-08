@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>padding margin 实现登高布局</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .parent {
+            overflow: hidden;
+        }
+
+        .left,
+        .right {
+            width: 50%;
+            float: left;
+            margin-bottom: -300px;
+            padding-bottom: 300px;
+        }
+
+        .left {
+            background: red;
+        }
+
+        .right {
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div id="left" class="left">
+            <p>1</p>
+        </div>
+        <div id="right" class="right">
+            <p>1</p>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            const left = document.getElementById('left')
+            const right = document.getElementById('right')
+            const addItem = event => {
+                var p = document.createElement('p');
+                p.innerHTML = event.target.id;
+                event.target.appendChild(p);
+            }
+
+            left.addEventListener('click', addItem, false)
+            right.addEventListener('click', addItem, false)
+        }
+    </script>
+</body>
+
+</html>

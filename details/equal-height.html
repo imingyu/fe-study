@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>等高布局</title>
+    <style>
+        body,
+        p {
+            margin: 0;
+        }
+
+        .parent {
+            position: relative;
+        }
+
+        .center {
+            box-sizing: border-box;
+            padding: 0 20px;
+            background-clip: content-box;
+            border-left: 210px solid lightblue;
+            border-right: 310px solid lightgreen;
+        }
+        .left,
+        .right{
+            z-index: 400;
+        }
+
+        .left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+        }
+
+        .right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="parent">
+        <div class="left">
+            <p>left</p>
+        </div>
+        <div class="center">
+            <p>center</p>
+        </div>
+        <div class="right">
+            <p>right</p>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            ['left', 'right', 'center'].forEach(id => {
+                document.getElementsByClassName(id)[0].addEventListener('click', (e) => {
+                    console.log(e.target);
+                    var p = document.createElement('p');
+                    p.innerHTML = id;
+                    e.target.appendChild(p);
+                }, false)
+            })
+        }, false)
+    </script>
+</body>
+
+</html>
