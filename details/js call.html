@@ -6,9 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+    .box>p.sub-box{
+        color: red;
+    }
+    .box p.sub-box{
+        color: blue;
+    }
+    </style>
 </head>
 
 <body>
+    <div class="box">
+        <p class="sub-box">111</p>
+        <p class="sub-box">222</p>
+    </div>
+    <div class="box">
+        <p class="sub-box">222</p>
+    </div>
     <script>
         function call(func, ctx) {
             var id1 = (Math.random() + '').replace('0.', '');

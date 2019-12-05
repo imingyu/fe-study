@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <style>
+            .container {
+                width: 500px;
+                margin: 40px auto;
+                background: green;
+            }
+
+            .media-item {
+                border: 1px solid #000;
+                margin-bottom: 20px;
+                overflow: hidden;
+            }
+            .media-img {
+                width: 200px;
+                height: 200px;
+                float: left;
+            }
+            .media-img img {
+                width: 100%;
+                height: 100%;
+            }
+            .media-info {
+                margin-left: 220px;
+            }
+            .media-info h2 {
+                height: 33px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .box {
+                display: flex;
+                align-items: center;
+                padding: 40px 20px;
+                color: white;
+                background-color: black;
+            }
+            .item {
+                flex-grow: 1;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+                border: 1px solid white;
+                background-color: #ff0000;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <span class="item">元素元素元素元素元素元素元素元素元素元素</span> <span class="item">元素</span>
+            <span class="item">元素</span> <span class="item">元素</span>
+            <div class="item">元素</div>
+            <div class="item">元素</div>
+        </div>
+        <div class="container">
+            <div class="media-item">
+                <div class="media-img">
+                    <img src="http://pic5.40017.cn/03/000/51/fc/rBANB1wPb5-AYh8tAAQvm5SmIxw276.jpg" alt="" />
+                </div>
+                <div class="media-info">
+                    <h2>【真功夫】冬(香)菇鸡腿肉饭套餐</h2>
+                    <div class="media-core">
+                        <p class="media-desc">【10点之后到店兑换】冬（香）菇鸡腿肉饭+生菜王+香滑蒸蛋</p>
+                        <div class="media-action">即将开始</div>
+                    </div>
+                </div>
+            </div>
+            <div class="media-item">
+                    <div class="media-img">
+                        <img src="http://pic5.40017.cn/03/000/51/fc/rBANB1wPb5-AYh8tAAQvm5SmIxw276.jpg" alt="" />
+                    </div>
+                    <div class="media-info">
+                        <h2>【真功夫】冬(香)菇鸡腿肉饭套餐</h2>
+                        <div class="media-core">
+                            <p class="media-desc">【10点之后到店兑换】冬（香）菇鸡腿肉饭+生菜王+香滑蒸蛋</p>
+                            <div class="media-action">即将开始</div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("start");
+      setTimeout(() => {
+        console.log("setTimeout1");
+      });
+      //   setImmediate(() => {
+      //     console.log(`setImmediate1`);
+      //   });
+      Promise.resolve(1)
+        .then(res => {
+          console.log(`Promise${res}`);
+          return 2;
+        })
+        .then(res => {
+          console.log(`Promise${res}`);
+          return Promise.resolve(4).then(res => {
+            console.log(`Promise${res}`);
+            return new Promise(resolve => {
+              setTimeout(() => {
+                console.log(`Promise${res}.setTimeout`);
+                resolve(res + 1);
+              }, 1000);
+            });
+          });
+        })
+        .then(res => {
+          console.log(`Promise${res}`);
+        });
+      Promise.reject(3).catch(err => {
+        console.log(`Promise${err}`);
+      });
+      new MutationObserver(res => {
+        console.log(`MutationObserver${res}`);
+      });
+      //   setImmediate(() => {
+      //     console.log(`setImmediate2`);
+      //   });
+      setTimeout(() => {
+        console.log("setTimeout2");
+      });
+      console.log("end");
+    </script>
+  </body>
+</html>
