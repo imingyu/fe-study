@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .tabs {
+        overflow: hidden;
+      }
+      .tab-head-item :last-child {
+        border-right: none;
+      }
+      .tab-head-item {
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 20px;
+        border-right: 1px solid #ededed;
+      }
+      .tab-head-item > input {
+        opacity: 0;
+      }
+      .tabs-panels {
+        border-top: 1px solid #ededed;
+        clear: both;
+      }
+      .tab-panel {
+        display: none;
+      }
+      .tabs>.tab-head-item:nth-child(1):hover ~ .tabs-panels>.tab-panel:nth-child(1),
+      .tabs>.tab-head-item:nth-child(1):checked ~ .tabs-panels>.tab-panel:nth-child(1),
+      .tabs>.tab-head-item:nth-child(2):hover ~ .tabs-panels>.tab-panel:nth-child(2),
+      .tabs>.tab-head-item:nth-child(2):checked ~ .tabs-panels>.tab-panel:nth-child(2),
+      .tabs>.tab-head-item:nth-child(3):hover ~ .tabs-panels>.tab-panel:nth-child(3),
+      .tabs>.tab-head-item:nth-child(3):checked ~ .tabs-panels>.tab-panel:nth-child(3),
+      .tabs>.tab-head-item:nth-child(4):hover ~ .tabs-panels>.tab-panel:nth-child(4),
+      .tabs>.tab-head-item:nth-child(4):checked ~ .tabs-panels>.tab-panel:nth-child(4) {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tabs">
+      <label class="tab-head-item">
+        <input type="radio" name="tab" value="1" />
+        水果
+      </label>
+      <label class="tab-head-item">
+        <input type="radio" name="tab" value="2" />
+        蔬菜
+      </label>
+      <label class="tab-head-item">
+        <input type="radio" name="tab" value="2" />
+        肉禽
+      </label>
+      <label class="tab-head-item">
+        <input type="radio" name="tab" value="2" />
+        零食
+      </label>
+      <div class="tabs-panels">
+        <div class="tab-panel">我是1</div>
+        <div class="tab-panel">我是2</div>
+        <div class="tab-panel">我是3</div>
+        <div class="tab-panel">我是4</div>
+      </div>
+    </div>
+  </body>
+</html>
