@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            :defined {
+                color: red;
+            }
+            .sd {
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>标题</h1>
+        <script>
+            const sp = document.createElement("div");
+            sp.innerHTML = "哈哈哈2";
+            document.body.append(sp);
+            class UserInfo extends HTMLElement {
+                constructor() {
+                    super();
+                    // document.body.removeChild(document.body.childNodes[0]);
+                }
+                connectedCallback() {
+                    const sp = document.createElement("div");
+                    sp.innerHTML = "哈哈哈";
+                    this.classList.add("sd");
+                    this.append(sp);
+                    console.log(this.setAttribute("name", 2));
+                }
+            }
+            customElements.define("user-info", UserInfo);
+        </script>
+        <user-info></user-info>
+        <h1>标题2</h1>
+    </body>
+</html>
